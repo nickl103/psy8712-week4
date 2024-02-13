@@ -5,3 +5,5 @@ library(tidyverse)
 #Data Import
 import_tbl <- read_delim("../data/week4.dat", delim= "-", col_names = c("casenum", "parnum", "stimver", "datadate", "qs"))
 glimpse(import_tbl)
+wide_tbl <- separate_wider_delim(import_tbl, cols=qs, delim="-", names= c("q1", "q2", "q3", "q4", "q5"))
+wide_tbl[5:9] <- sapply(wide_tbl[5:9], as.integer)
